@@ -1,6 +1,8 @@
 
 . .profile
 
+export EDITOR='vim'
+
 alias ..='cd ..'
 
 # textmate
