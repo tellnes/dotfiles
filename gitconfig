@@ -1,0 +1,20 @@
+[user]
+	name = Christian Tellnes
+	email = christian@tellnes.no
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	excludesfile = ~/.gitignore
+[alias]
+	a = add
+	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
+	c = commit
+	d = diff
+	dc = diff --cached
+	ds = diff --staged
+	l = log --oneline --decorate
+	lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	s = status --short --branch
+	push = push --tags
