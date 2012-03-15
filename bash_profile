@@ -1,6 +1,6 @@
 . .bashrc
 
-export PATH="{$HOME}/bin:${PATH}"
+export PATH="$HOME/bin:${PATH}"
 
 export EDITOR='mate -w'
 
