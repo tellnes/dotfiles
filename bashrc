@@ -2,6 +2,8 @@
 # if not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+export CLICOLOR=true
+
 . ~/.bash_aliases
 
 export EDITOR='vim'
