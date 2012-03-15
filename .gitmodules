@@ -1,0 +1,3 @@
+[submodule "support/n"]
+	path = support/n
+	url = git://github.com/visionmedia/n.git
