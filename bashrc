@@ -1,7 +1,8 @@
 
-. ~/.profile
+# if not running interactively, don't do anything
+[ -z "$PS1" ] && return
 
-. ~/.aliases
+. ~/.bash_aliases
 
 export EDITOR='vim'
 
