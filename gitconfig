@@ -10,8 +10,7 @@
 [alias]
 	a = add
 	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
-	c = commit
-	cm = commit -m
+	c = commit -m
 	d = diff
 	dc = diff --cached
 	ds = diff --staged
