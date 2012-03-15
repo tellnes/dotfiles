@@ -1,0 +1,8 @@
+
+export N_DIR=~/.n
+
+test -d $N_DIR || mkdir -p $N_DIR
+
+alias npm='n npm `node --version`'
+
+export PATH="$HOME/.n/current/bin:${PATH}"
