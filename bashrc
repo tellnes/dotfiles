@@ -8,4 +8,7 @@ export CLICOLOR=true
 
 export EDITOR='vim'
 
-export PS1="\[\e[0;33m\]\u\[\e[m\]\e[0;31m@\e[0;36m\`if [ \$NAME ]; then echo -e $NAME; else echo -e $HOSTNAME; fi\` \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]"
+
+PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
+
+export PS1="\[\e[0;36m\]\u\[\e[0;31m\]@\[\e[0;33m\h \[\e[0;34m\]\$CurDir \[\e[0;32m\]\$ \[\e[0m\]"
