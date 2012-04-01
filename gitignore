@@ -7,9 +7,10 @@ Icon?
 .Trashes
 
 # Linux
-.*
+#.*
 *~
 *.sw[a-p]
+!*.swf
 
 # Log
 *.log
@@ -27,3 +28,6 @@ tmtags
 
 # Node
 node_modules
+
+# Cloud9
+.settings.xml
