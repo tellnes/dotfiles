@@ -10,4 +10,4 @@ alias m='mate'
 alias g='git'
 
 # closure compiler
-alias closure='java -jar support/closure-compiler/compiler.jar'
+alias closure='java -jar ~/.dotfiles/support/closure-compiler/compiler.jar'

@@ -4,6 +4,8 @@ set -e
 
 BASE="$(cd "$(dirname "$0")" && pwd)"
 
+echo "ln -sf $BASE -> ~/.dotfiles"
+ln -sf $BASE ~/.dotfiles
 
 # Very simple install script
 
