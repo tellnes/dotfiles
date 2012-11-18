@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "track": "~0.1.0",
+    "promzard": "~0.2.0"
+  }
+}

@@ -1,0 +1,130 @@
+#!/usr/bin/env node
+
+var promzard = require('promzard')
+  , fs = require('fs')
+  , exec = require('child_process').exec
+  , path = require('path')
+  , track = require('track')
+
+var initFile = path.resolve(__dirname, '..', 'nodeinit', 'init.js')
+
+var t = track()
+
+
+var dir = path.resolve(process.argv[2])
+
+try {
+  fs.mkdirSync(dir)
+} catch(e) { }
+
+
+t('git init', function (cb) {
+  fs.exists(path.join(dir, '.git'), function (ex) {
+    if (ex) return cb()
+
+    exec('git init', { cwd: dir }, function (err, stdout, stderr) {
+      cb(err)
+    })
+  })
+})()
+
+t('old-pkg', function (cb) {
+  fs.readFile(path.join(dir, 'package.json'), 'utf8', function (err, content) {
+    if (err) return cb(null, {})
+
+    var pkg = {}
+    try {
+      content = JSON.parse(content)
+    } catch(err) {}
+
+    cb(null, pkg)
+  })
+})()
+
+t('pkg', ['old-pkg'], function (pkg, cb) {
+  var ctx = {}
+  ctx.dirname = dir
+  ctx.filename = path.join(dir, 'package.json')
+  ctx.basename = path.basename(dir)
+  ctx.package = pkg
+  ctx.config = {}
+
+  promzard(initFile, ctx, cb)
+})()
+
+t(['pkg'], function (pkg, cb) {
+  try {
+    pkg = JSON.stringify(pkg, null, 2) + '\n'
+  } catch(err) {
+    return cb(err)
+  }
+
+  fs.writeFile(path.join(dir, 'package.json'), pkg, 'utf8', cb)
+})()
+
+var defDesc = "Unnamed repository; edit this file " +
+              "'description' to name the repository."
+
+t('git description', ['git init', 'pkg'], function (A, pkg, cb) {
+  var file = path.join(dir, '.git', 'description')
+
+  fs.readFile(file, 'utf8', function (err, content) {
+    if (content == defDesc) return cb()
+    fs.writeFile(file, pkg.description, cb)
+  })
+})()
+
+t(['pkg'], function (pkg, cb) {
+  createFile(pkg.main, cb)
+})()
+
+t(['pkg'], function (pkg, cb) {
+  var content = [ '# ' + pkg.name
+                , pkg.description
+                , '## Usage'
+                , '```js'
+                , '```'
+                , '## Install'
+                , '    $ npm install ' + pkg.name
+                , '## License'
+                , 'MIT'
+                ].join('\n\n') + '\n'
+  createFile('Readme.md', content, cb)
+})()
+
+t(function (cb) {
+  var file = path.join(dir, 'LICENSE')
+  fs.exists(file, function (ex) {
+    if (ex) return cb()
+    copyFile(path.resolve(__dirname, '..', 'nodeinit', 'LICENSE'), file, cb)
+  })
+})()
+
+t.end(function(err) {
+  if (err) throw err
+})
+
+
+function createFile(file, data, cb) {
+  if (arguments.length == 2) {
+    cb = data
+    data = ''
+  }
+
+  file = path.join(dir, file)
+  fs.exists(file, function (ex) {
+    if (ex) return cb()
+
+    fs.writeFile(file, data || '', cb)
+  })
+}
+
+function copyFile(src, dest, cb) {
+  var called = false
+  function fn(err) {
+    if (called) return
+    called = true
+    cb(err)
+  }
+  fs.createReadStream(src).on('error', fn).pipe(fs.createWriteStream(dest)).on('error', fn).on('close', fn)
+}
