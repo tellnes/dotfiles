@@ -1,6 +1,5 @@
 # OS X
 .DS_Store
-Icon?
 
 # Files that might appear on external disk #
 .Spotlight-V100
@@ -28,6 +27,10 @@ tmtags
 
 # Node
 node_modules
+*.node
+*.a
+*.o
+*.dylib
 
 # Cloud9
 .settings.xml

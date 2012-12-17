@@ -9,6 +9,7 @@
 	excludesfile = ~/.gitignore
 [alias]
 	a = add
+	ap = add -p
 	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
 	c = commit -m
 	d = diff
@@ -18,3 +19,4 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	s = status --short --branch
 	push = push --tags
+	rmdf = !git rm $(git ls-files --deleted)
