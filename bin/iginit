@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+
+var fs = require('fs')
+  , path = require('path')
+  , exec = require('child_process').exec
+
+var name = process.argv[2]
+
+var dir = path.resolve(process.env.HOME, 'ig', name)
+
+fs.mkdirSync(dir)
+fs.writeFileSync(path.resolve(dir, 'index.js'), '')
+
+
+var pkg = {
+  "name": "ig-" + name,
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@git.tsys.no:ig/" + name + ".git"
+  },
+  "author": "Christian Tellnes <christian@tellnes.no> (http://christian.tellnes.com/)",
+  "dependencies": {},
+  "publishConfig": {
+     "registry": "https://registry.npm.tellnes.com/"
+   }
+}
+
+fs.writeFileSync(path.resolve(dir, 'package.json'), JSON.stringify(pkg, null, 2))
+
+
+exec('git init', { cwd: dir }, function(err) {
+  if (err) throw err
+  
+  exec('git remote add origin git@git.tsys.no:ig/' + name + '.git', { cwd: dir }, function(err) {
+    if (err) throw err
+    
+    exec('mate .', { cwd: dir }, function(err) {
+      if (err) throw err
+    })
+  })
+})
