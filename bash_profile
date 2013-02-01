@@ -10,6 +10,8 @@ export EDITOR='mate -w'
 [ -f ~/.bash_custom ] && . ~/.bash_custom
 
 
+source ~/.git-completion.bash
+
 
 # {{{
 # Node Completion - Auto-generated, do not touch.
