@@ -12,12 +12,15 @@
 	ap = add -p
 	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
 	c = commit -m
+	ca = commit --amend
 	co = checkout
 	d = diff
 	dc = diff --cached
 	ds = diff --staged
 	l = log --oneline --decorate
 	lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	r = rebase
+	rc = rebase --continue
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
 	s = status --short --branch
 	pu = pull --rebase upstream master
