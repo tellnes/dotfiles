@@ -4,9 +4,9 @@ set nocompatible
 colorscheme desert
 set mouse=a
 
-nnoremap å :tabnew<cr>
-nnoremap æ :tabnext<cr>
-nnoremap ø :tabprev<cr>
+nnoremap <F3> :tabnew<cr>
+nnoremap <F4> :tabnext<cr>
+nnoremap <F2> :tabprev<cr>
 
 set smartindent
 set tabstop=2
