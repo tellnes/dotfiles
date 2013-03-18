@@ -1,5 +1,14 @@
 
+# All the PATH thing should go here
+
+export PATH="$HOME/.n/current/bin:${PATH}"
+
 export PATH="$HOME/bin:$HOME/usr/bin:${PATH}"
+
+
+# end PATH
+
+
 
 export EDITOR='mate -w'
 
