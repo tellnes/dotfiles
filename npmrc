@@ -3,4 +3,4 @@ init.author.name = Christian Tellnes
 init.author.email = christian@tellnes.no
 init.author.url = http://christian.tellnes.com/
 usage = true
-link = true
+link = false
