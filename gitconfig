@@ -17,6 +17,7 @@
 	d = diff
 	dc = diff --cached
 	ds = diff --staged
+	gist = !git diff | gist --private --open --filename change.patch
 	l = log --oneline --decorate
 	lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	r = rebase
