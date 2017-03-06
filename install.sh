@@ -9,7 +9,7 @@ ln -sf $BASE ~/.dotfiles
 
 # Very simple install script
 
-for file in `find ${BASE} -maxdepth 1 -not -name '.*' -not -name install.sh -not -name bin -not -name etc -not -name README.txt -not -name LICENSE -type f`; do
+for file in `find ${BASE} -maxdepth 1 -not -name '.*' -not -name install.sh -not -name bin -not -name etc -not -name README.txt -not -name LICENSE -not -name package.json -type f`; do
     filename=`basename "$file"`
     echo "ln -sf $BASE/$filename -> ~/.$filename"
     ln -sf "$BASE/$filename" ~/.$filename

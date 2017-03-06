@@ -22,5 +22,7 @@
   "node": true,
   "browser": true,
 
-  "sub": true
+  "sub": true,
+
+  "esnext": true
 }

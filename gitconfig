@@ -7,12 +7,15 @@
 	branch = auto
 [core]
 	excludesfile = ~/.gitignore
+	whitespace = fix
+	editor = vim
 [alias]
 	a = add
 	ap = add -p
 	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
 	c = commit -m
-	ca = commit --amend
+  ca = commit --amend
+  cf = commit --fixup
 	co = checkout
 	d = diff
 	dc = diff --cached
@@ -27,3 +30,7 @@
 	pu = pull --rebase upstream master
 	push = push --tags
 	rmdf = !git rm $(git ls-files --deleted)
+[rebase]
+	autosquash = true
+[merge]
+	ff = only

@@ -10,7 +10,7 @@ export PATH="$HOME/bin:$HOME/usr/bin:${PATH}"
 
 
 
-export EDITOR='mate -w'
+export EDITOR='vim'
 
 [ -f ~/.bash_node ] && . ~/.bash_node
 
@@ -18,15 +18,9 @@ export EDITOR='mate -w'
 
 [ -f ~/.bash_custom ] && . ~/.bash_custom
 
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
+
 
 source ~/.git-completion.bash
 
 
-# {{{
-# Node Completion - Auto-generated, do not touch.
-shopt -s progcomp
-for f in $(command ls ~/.node-completion); do
-  f="$HOME/.node-completion/$f"
-  test -f "$f" && . "$f"
-done
-# }}}
